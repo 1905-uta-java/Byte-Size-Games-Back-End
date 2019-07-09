@@ -2,10 +2,7 @@ package com.revature.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,8 +17,8 @@ import com.revature.model.User;
 import com.revature.service.UserService;
 
 @RestController
-@RequestMapping("/login")
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/login")
 public class LoginController {
 	
 	@Autowired
@@ -30,18 +27,22 @@ public class LoginController {
 	
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<User> getAllUsers() {
-		
+		System.out.println("login get");
 		return uService.findAllUsers();
 	}
 	
-	@GetMapping(value="/{userId}")
+	@GetMapping(value="/{username}")
 	public User getRestaurantById(@PathVariable("userId") Integer id) {
 		return uService.findUserById(id);
 	}
-
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> addUser(@Valid @RequestBody User u) {
-		System.out.println("Attempting to make user; " + u.toString());
-		return new ResponseEntity<User>(uService.addUser(u),HttpStatus.CREATED);
+	
+	@PostMapping()
+	public User addUser(@RequestBody User u) {
+		User user = uService.findUserByUsername(u.getUsername());
+		if(u.getUsername().equals(user.getUsername()) && u.getPassword().equals(user.getPassword())) {
+			return user;
+		}
+		System.out.println(user.toString()); 
+		return u;
 	}
 }

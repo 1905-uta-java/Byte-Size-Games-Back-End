@@ -2,8 +2,12 @@ package com.revature.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,8 +41,9 @@ public class UserController {
 	}
 
 	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public User addUser(@RequestBody User u) {
-		return uService.addUser(u);
+	public ResponseEntity<User> addUser(@Valid @RequestBody User u) {
+		System.out.println("Attempting to make user; " + u.toString());
+		return new ResponseEntity<User>(uService.addUser(u),HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{userId}")
