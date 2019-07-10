@@ -16,7 +16,7 @@ script:
   - cd /usr/local/maven-3.5.2/repository
   - mkdir com\oracle\ojdbc7\12.1.0
   - cd com\oracle\ojdbc7\12.1.0
-  - - wget -O ojdbc7-12.1.0.jar https://uccb1470d58d4f57eb7d4808553c.dl.dropboxusercontent.com/cd/0/get/Akdcom9phcHv6XN_wXFKGU4DCFwaJgbBbo8ZKCgESZjTQRnPAHhcWc0SjKtl-WCp77A_-65ghZ84ea1yURk1Amn4F13RGy8tvb4qL6jCFG_XvQ/file#
+  - wget -O ojdbc7-12.1.0.jar https://uccb1470d58d4f57eb7d4808553c.dl.dropboxusercontent.com/cd/0/get/Akdcom9phcHv6XN_wXFKGU4DCFwaJgbBbo8ZKCgESZjTQRnPAHhcWc0SjKtl-WCp77A_-65ghZ84ea1yURk1Amn4F13RGy8tvb4qL6jCFG_XvQ/file#
   - mvn sonar:sonar -Dsonar.projectKey=1905-uta-java_Byte-Size-Games-Back-End -Dsonar.organization=1905-uta-java -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
   - wget -O ojdbc7-12.1.0.jar https://uccb1470d58d4f57eb7d4808553c.dl.dropboxusercontent.com/cd/0/get/Akdcom9phcHv6XN_wXFKGU4DCFwaJgbBbo8ZKCgESZjTQRnPAHhcWc0SjKtl-WCp77A_-65ghZ84ea1yURk1Amn4F13RGy8tvb4qL6jCFG_XvQ/file#
 
