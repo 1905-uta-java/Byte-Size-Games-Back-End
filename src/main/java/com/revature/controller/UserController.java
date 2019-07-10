@@ -20,11 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.User;
 import com.revature.service.UserService;
+import com.revature.util.UserControllerHelper;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200", "http://bytesizegames.us-east-1.elasticbeanstalk.com", 
-"http://ec2-3-19-30-93.us-east-2.compute.amazonaws.com:3000"})
-
+@CrossOrigin(origins = {"http://localhost:4200", "http://bytesizegames.us-east-1.elasticbeanstalk.com", "http://ec2-3-19-30-93.us-east-2.compute.amazonaws.com:3000"})
 @RequestMapping("/users")
 public class UserController {
 	
@@ -42,10 +41,16 @@ public class UserController {
 		return uService.findUserById(id);
 	}
 
+	//Need to add indication that user was not added to the database
+	
 	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> addUser(@Valid @RequestBody User u) {
-		System.out.println("Attempting to make user; " + u.toString());
+		if(!UserControllerHelper.validUser(u, uService.findAllUsers())){
+			return null;
+		}
+		else {
 		return new ResponseEntity<User>(uService.addUser(u),HttpStatus.CREATED);
+		}
 	}
 	
 	@PutMapping("/{userId}")
