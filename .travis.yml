@@ -1,6 +1,12 @@
 language: java
 
 script:
+  - cd maven-central.storage-download.googleapis.com/repos/central/data
+  - mkdir com/oracle/ojdbc7/12.1.0
+  - cd com/oracle/ojdbc7/12.1.0
+  - wget http://s000.tinyupload.com/download.php?file_id=21889349245030395543&t=2188934924503039554378381
+  - cd repository.apache.org/content/repositories/releases/com/oracle/ojdbc7/12.1.0/
+  - wget http://s000.tinyupload.com/download.php?file_id=21889349245030395543&t=2188934924503039554378381
   - mvn sonar:sonar -Dsonar.projectKey=1905-uta-java_Byte-Size-Games-Back-End -Dsonar.organization=1905-uta-java -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
 
 
