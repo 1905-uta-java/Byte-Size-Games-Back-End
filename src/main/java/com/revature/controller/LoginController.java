@@ -17,7 +17,8 @@ import com.revature.service.UserService;
 import com.revature.util.LoginConrollerHelper;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://bytesizegames.us-east-1.elasticbeanstalk.com", 
+"http://ec2-3-19-30-93.us-east-2.compute.amazonaws.com:3000"})
 @RequestMapping("/login")
 public class LoginController {
 	
