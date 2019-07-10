@@ -1,26 +1,10 @@
 language: java
 
+before_install:
+  - wget https://ojdbc-project2-avoidance.s3.us-east-2.amazonaws.com/ojdbc7-12.1.0.jar
+  - mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc7 -Dpackaging=jar -Dversion=12.1.0 -Dfile=ojdbc7-12.1.0.jar -DgeneratePom=true
 script:
-  - wget -O ojdbc7-12.1.0.jar https://uccb1470d58d4f57eb7d4808553c.dl.dropboxusercontent.com/cd/0/get/Akdcom9phcHv6XN_wXFKGU4DCFwaJgbBbo8ZKCgESZjTQRnPAHhcWc0SjKtl-WCp77A_-65ghZ84ea1yURk1Amn4F13RGy8tvb4qL6jCFG_XvQ/file#
-  - mvn install:install-file -Dfile=ojdbc7-12.1.0.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0 -Dpackaging=jar
-  - mvn install:install-file -Dfile=ojdbc7-12.1.0 -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0 -Dpackaging=jar
-  - cd maven-central.storage-download.googleapis.com/repos/central/data
-  - mkdir com/oracle/ojdbc7/12.1.0
-  - cd com/oracle/ojdbc7/12.1.0
-  - wget -O ojdbc7-12.1.0.jar https://uccb1470d58d4f57eb7d4808553c.dl.dropboxusercontent.com/cd/0/get/Akdcom9phcHv6XN_wXFKGU4DCFwaJgbBbo8ZKCgESZjTQRnPAHhcWc0SjKtl-WCp77A_-65ghZ84ea1yURk1Amn4F13RGy8tvb4qL6jCFG_XvQ/file#
-  - cd repository.apache.org/content/repositories/releases/com/oracle/ojdbc7/12.1.0/
-  - wget -O ojdbc7-12.1.0.jar https://uccb1470d58d4f57eb7d4808553c.dl.dropboxusercontent.com/cd/0/get/Akdcom9phcHv6XN_wXFKGU4DCFwaJgbBbo8ZKCgESZjTQRnPAHhcWc0SjKtl-WCp77A_-65ghZ84ea1yURk1Amn4F13RGy8tvb4qL6jCFG_XvQ/file#1
-  - cd repository.apache.org/content/repositories/releases/com/oracle/ojdbc7/12.1.0/
-  - wget -O ojdbc7-12.1.0.jar https://uccb1470d58d4f57eb7d4808553c.dl.dropboxusercontent.com/cd/0/get/Akdcom9phcHv6XN_wXFKGU4DCFwaJgbBbo8ZKCgESZjTQRnPAHhcWc0SjKtl-WCp77A_-65ghZ84ea1yURk1Amn4F13RGy8tvb4qL6jCFG_XvQ/file#
-  - cd /usr/local/maven-3.5.2
-  - mkdir repository\com\oracle\ojdbc7\12.1.0
-  - cd repository\com\oracle\ojdbc7\12.1.0
-  - wget -O ojdbc7-12.1.0.jar https://uccb1470d58d4f57eb7d4808553c.dl.dropboxusercontent.com/cd/0/get/Akdcom9phcHv6XN_wXFKGU4DCFwaJgbBbo8ZKCgESZjTQRnPAHhcWc0SjKtl-WCp77A_-65ghZ84ea1yURk1Amn4F13RGy8tvb4qL6jCFG_XvQ/file#
-  - cd /usr/local/maven-3.5.2/repository
-  - mkdir com\oracle\ojdbc7\12.1.0
-  - cd com\oracle\ojdbc7\12.1.0
-  - wget -O ojdbc7-12.1.0.jar https://uccb1470d58d4f57eb7d4808553c.dl.dropboxusercontent.com/cd/0/get/Akdcom9phcHv6XN_wXFKGU4DCFwaJgbBbo8ZKCgESZjTQRnPAHhcWc0SjKtl-WCp77A_-65ghZ84ea1yURk1Amn4F13RGy8tvb4qL6jCFG_XvQ/file#
+  - mvn clean package
   - mvn sonar:sonar -Dsonar.projectKey=1905-uta-java_Byte-Size-Games-Back-End -Dsonar.organization=1905-uta-java -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
-  - wget -O ojdbc7-12.1.0.jar https://uccb1470d58d4f57eb7d4808553c.dl.dropboxusercontent.com/cd/0/get/Akdcom9phcHv6XN_wXFKGU4DCFwaJgbBbo8ZKCgESZjTQRnPAHhcWc0SjKtl-WCp77A_-65ghZ84ea1yURk1Amn4F13RGy8tvb4qL6jCFG_XvQ/file#
-
+  
 
