@@ -38,31 +38,36 @@ public class UserController {
 	
 	@GetMapping(value="/{userId}")
 	public User getRestaurantById(@PathVariable("userId") Integer id) {
-		return uService.findUserById(id);
+		User u = uService.findUserById(id);
+		return u.safeUser();
 	}
 
 	//Need to add indication that user was not added to the database
 	
 	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> addUser(@Valid @RequestBody User u) {
+	public User addUser(@Valid @RequestBody User u) {
 		if(!UserControllerHelper.validUser(u, uService.findAllUsers())){
 			return null;
 		}
 		else {
-		return new ResponseEntity<User>(uService.addUser(u),HttpStatus.CREATED);
+		new ResponseEntity<User>(uService.addUser(u),HttpStatus.CREATED);
+		return u.safeUser();
+
 		}
 	}
 	
 	@PutMapping("/{userId}")
 	public User updateUser(@PathVariable("userId")Integer id, @RequestBody User u) {
 		u.setUserId(id);;
-		return uService.updateUser(u);
+		uService.updateUser(u);
+		return u.safeUser();
 	}
 	
 	@DeleteMapping("/{userId}")
 	public User deleteUser(@PathVariable("userId") Integer id) {
 		User u = new User(id);
-		return uService.deleteUser(u);
+		uService.deleteUser(u);
+		return u.safeUser();
 	}
 
 }

@@ -3,9 +3,11 @@ package com.revature.controller;
 import java.util.HashMap;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TokenController {
 	
 	public static HashMap<Integer, Integer> tokens = new HashMap<Integer, Integer>();
+	Integer tokenNumber = 1;
 	
 	@GetMapping
 	public HashMap<Integer, Integer> getTokens(){
@@ -26,13 +29,33 @@ public class TokenController {
 	
 	@PostMapping
 	public int giveToken(@RequestBody Integer i){
-		int high = tokens.size() + 1;
-		tokens.put(high, i);
-		return high;
+		tokenNumber += 2;
+		tokens.put(i, tokenNumber);
+		return tokenNumber;
+	}
+	
+	@PutMapping("/{userId}")
+	public int makeHost(@PathVariable("userId")Integer id) {
+		tokenNumber += 2;
+		tokens.remove(id);
+		tokens.put(id, tokenNumber - 1);
+		return tokenNumber - 1;
 	}
 	
 	@PostMapping("/{userId}")
-	public int makHost(@PathVariable("userId")Integer id) {
-		return 0;
+	public boolean checkUser(@PathVariable("userId")Integer userId, @PathVariable("tokenId")Integer tokenId) {
+		Integer testToken = tokens.get(userId);
+		if(testToken == tokenId) {
+			System.out.println("You have succeed");
+			return true;
+		}
+		System.out.println("You have failed");
+		return false;
 	}
+	
+	@DeleteMapping("/{userId}")
+	public void deleteUser(@PathVariable("userId") Integer id) {
+		tokens.remove(id);
+	}
+	
 }

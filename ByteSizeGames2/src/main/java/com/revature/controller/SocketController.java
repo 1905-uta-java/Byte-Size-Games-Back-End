@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
 
 import org.springframework.http.MediaType;
@@ -50,8 +51,19 @@ public class SocketController {
 	}
 	
 	@GetMapping("/{getAll}")
-	public HashMap<Integer, String>sendBackAll(){
-		return questions;
+	public String sendBackAll(){
+		if(questions.size() == 0) {
+			getQuestion();
+		}
+		String question = "";
+		for(int i = 0; i < questions.size(); i++) {
+			if(questions.containsKey(i)) {
+				question = questions.get(i);
+				questions.remove(i);
+				return question;
+			}
+		}
+		return null;
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.revature.util;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +14,12 @@ public class UserControllerHelper {
 	
 	
 	public static boolean validUser(User u, List<User> users) {
-		if(u.getFirstName() == null || u.getLastName() == null || u.getUsername() == null || u.getPassword() == null || u.getEmail() == null) {
+		if(u.getFirstName().equals("") || u.getLastName().equals("") || u.getUsername().equals("") || u.getPassword().equals("") || u.getEmail().equals("")) {
 			System.out.println("THIS IS NOT A USER");
 			return false;
 		}
 		for(User user : users) {
-			if(user.getUsername().equals(u.getUsername())) {
+			if(u.getUsername().equals(user.getUsername())) {
 				System.out.println("User already exists");
 				return false;
 			}

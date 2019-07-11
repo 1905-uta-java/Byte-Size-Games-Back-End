@@ -121,6 +121,12 @@ public class User {
 	public void setGamesPlayed(int gamesPlayed) {
 		this.gamesPlayed = gamesPlayed;
 	}
+	
+	public User safeUser() {
+		this.setPassword("safe");
+		return this;
+	}
+	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
