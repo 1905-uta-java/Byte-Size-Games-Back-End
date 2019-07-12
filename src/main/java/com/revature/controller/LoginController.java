@@ -34,7 +34,8 @@ public class LoginController {
 	
 	@GetMapping(value="/{username}")
 	public User getRestaurantById(@PathVariable("userId") Integer id) {
-		return uService.findUserById(id);
+		User u = uService.findUserById(id);
+		return u.safeUser();
 	}
 	
 	@PostMapping()
@@ -43,8 +44,8 @@ public class LoginController {
 		User user = uService.findUserByUsername(u.getUsername());
 		//System.out.println(user.toString());
 		if(LoginConrollerHelper.loginCheckIfUser(u, user)) {
-			return user;
+			return user.safeUser();
 		}
-		return u;
+		return u.safeUser();
 	}
 }

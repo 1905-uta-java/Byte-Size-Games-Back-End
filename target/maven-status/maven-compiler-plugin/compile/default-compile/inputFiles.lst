@@ -8,11 +8,11 @@ C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revat
 C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\repository\UserRepository.java
 C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\util\UserControllerHelper.java
 C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\service\LoginServiceImpl.java
-C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\controller\Game.java
 C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\controller\TokenController.java
 C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\model\User.java
 C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\util\LoginConrollerHelper.java
 C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\controller\LoginController.java
+C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\controller\SocketController.java
 C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\service\GameServiceImpl.java
 C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\controller\UserController.java
 C:\Users\benja\Documents\Spring_Hibernate\ByteSizeGames2\src\main\java\com\revature\model\Global.java
